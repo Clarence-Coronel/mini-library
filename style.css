@@ -24,7 +24,7 @@ header{
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
-    padding: max(2vh, 20px) max(20vw, 200px);
+    padding: max(2vh, 20px) 20vw;
     box-shadow: 0 1px 1px rgba(234, 202, 178, 0.722);
     z-index: 1;
 }
@@ -52,7 +52,7 @@ main{
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     background-color: rgb(252, 229, 197);
-    padding: max(2vw, 20px) max(20vw, 200px);
+    padding: max(2vw, 20px) 20vw;
 }
 
 main .button-container{
@@ -95,7 +95,7 @@ footer{
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    padding: max(1vh, 10px) max(20vw, 200px);
+    padding: max(1vh, 10px) 20vw;
     gap: max(0.5vw, 5px);
 }
 
