@@ -13,6 +13,7 @@ body{
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
     background-color: antiquewhite;
+    word-wrap: break-word;
 }
 
 /* Header */
@@ -86,20 +87,19 @@ main .button-container button span{
 main .books-container{
     display: grid;
     gap: max(1vw, 10px);
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     align-content: flex-start;
 }
 main .books-container .book{
-    height: 220px;
     background-color: white;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
     align-items: center;
-    padding: max(2vh, 15px) max(1vw, 15px);
-    overflow: auto;
+    padding: max(2vh, 15px) max(2vw, 20px);
+    /* overflow: hidden; */
     transition-duration: 100ms;
-
+    gap: max(3vh, 20px);
     border-radius: 5px;
 }
 main .books-container .book .book-info{
@@ -107,7 +107,7 @@ main .books-container .book .book-info{
     flex-flow: column;
     justify-content: center;
     align-items: flex-start;
-    gap: max(0.7vh, 7px);
+    gap: max(2vh, 20px);
 }
 .book .button-group{
     display: flex;
@@ -116,9 +116,10 @@ main .books-container .book .book-info{
     width: 100%;
 }
 .book-info > span{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: 200px;
+     /* white-space: wrap; */
+    /* text-overflow:ellipsis; */
+    /* overflow: hidden; */
 }
 .book-info > .title{
     font-weight: 1000;
@@ -150,9 +151,6 @@ main .books-container .book .book-info{
     color: white;
     font-weight: 700;
     border-radius: 5px;
-}
-.button-group button.toggle-read{
-
 }
 .button-group button.remove{
     color: rgb(155, 155, 155);
@@ -203,6 +201,8 @@ a:hover svg{
 @media screen and (max-width: 1200px){
     header{
         padding: max(2vh, 20px) max(5vw, 20px);
+        grid-template-columns: auto;
+        justify-content: unset;
     }
 
     main{
@@ -215,7 +215,13 @@ a:hover svg{
 }
 
 @media screen and (max-width: 500px){
-    main .books-container{
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    /* main .books-container{
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
+
+    .book-info > span{
+        width: 160px;
+        white-space: wrap;
+        text-overflow:ellipsis;
+    } */
 }
