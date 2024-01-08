@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
-    color: rgb(62, 61, 61);
+    color: rgb(78, 78, 78);
 }
 
 body{
@@ -48,6 +48,7 @@ main{
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     background-color: rgb(252, 229, 197);
+    gap: max(2vh, 15px);
     padding: max(2vw, 20px) 20vw;
 }
 main .button-container{
@@ -69,13 +70,14 @@ main .button-container button{
     color: rgb(246, 173, 128);
 }
 main .button-container button:hover{
-    border-radius: 5px;
     /* background-color: rgba(243, 183, 105, 0.506); */
     cursor: pointer;
     /* transform: translate(0, -5px);    
      */
 
      color: rgb(249, 138, 70);
+
+     /* color: rgb(232, 152, 22); */
 }
 main .button-container button span{
     font-size: 2rem;
@@ -100,9 +102,6 @@ main .books-container .book{
 
     border-radius: 5px;
 }
-/* main .books-container .book:hover{
-    transform: translate(0, -5px);
-} */
 main .books-container .book .book-info{
     display: flex;
     flex-flow: column;
@@ -126,10 +125,6 @@ main .books-container .book .book-info{
     width: 100%;
     font-size: 1.3rem;
     text-align: center;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 .book-info > .author, .book-info > .num-pages{
     /* color: rgb(68, 68, 68); */
@@ -185,9 +180,6 @@ main .books-container .book .book-info{
     background-color: rgb(252, 116, 116);
 }
 
-
-
-
 /* Footer */
 footer{
     display: flex;
@@ -201,10 +193,29 @@ footer a svg{
     transition-duration: 500ms;
     width: 30px;
 }
-
 a:hover svg{
     cursor: pointer;
     rotate: 360deg;
     scale: 1.2;
     /* fill: rgb(246, 173, 128); */
+}
+
+@media screen and (max-width: 1200px){
+    header{
+        padding: max(2vh, 20px) max(5vw, 20px);
+    }
+
+    main{
+        padding: max(2vw, 20px) max(5vw, 20px);
+    }
+
+    footer{
+        padding: max(1vh, 10px) max(5vw, 20px);
+    }
+}
+
+@media screen and (max-width: 500px){
+    main .books-container{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
 }
