@@ -360,6 +360,6 @@ input:focus:invalid{
 
 @media screen and (max-width: 500px){
     .addNewBook-modal{
-        top: 20%;
+        top: 25%;
     }
 }
