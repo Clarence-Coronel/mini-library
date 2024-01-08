@@ -14,6 +14,7 @@ body{
     min-height: 100vh;
     background-color: antiquewhite;
     word-wrap: break-word;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -23,7 +24,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: max(2vh, 20px) 20vw;
-    box-shadow: 0 1px 1px rgba(234, 202, 178, 0.722);
+    box-shadow: 0 1px 1px 2px rgba(103, 102, 102, 0.149);
     z-index: 1;
 }
 .logo > span{
@@ -186,6 +187,9 @@ footer{
     align-items: center;
     padding: max(1vh, 10px) 20vw;
     gap: max(0.5vw, 5px);
+
+    box-shadow: 0 -1px 1px 2px rgba(103, 102, 102, 0.149);
+    z-index: 1;
 }
 footer a svg{
     transition-duration: 500ms;
@@ -196,6 +200,117 @@ a:hover svg{
     rotate: 360deg;
     scale: 1.2;
     /* fill: rgb(246, 173, 128); */
+}
+
+.dialog-container{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(44, 44, 44, 0.64);
+    z-index: 8;
+}
+.hide-container{
+    display: none;
+}
+.addNewBook-modal{
+    width: min(90vw, 300px);
+    height: min(70vh, 300px);
+
+    position: fixed;
+    top: 35%;
+    left: 50%;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: max(1vh, 10px) max(1vw, 10px);
+    border: none;
+    background-color: rgb(243, 236, 229);
+    border-radius: 5px;
+    gap: max(2vh, 20px);
+
+    z-index: 9;
+
+    transform: translate(-50%, -50%) scale(0);
+    transition-duration: 150ms;
+}
+.show-modal{
+    transform: translate(-50%, -50%) scale(1);
+}
+.addNewBook-modal > p{
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.addNewBook-modal > form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+}
+.addNewBook-modal > form > fieldset{
+    width: 100%;
+    border: none;
+    display: flex;
+    flex-flow: column;
+    gap: max(1vh, 10px);
+}
+fieldset input[type="text"], fieldset input[type="number"]{
+    width: 100%;
+    border: none;
+    height: 40px;
+    padding: 0 max(1vw, 10px);
+    border-radius: 5px;
+}
+fieldset input[type="checkbox"]{
+    width: 12px;
+    height: 12px;
+}
+fieldset label{
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.addNewBook-modal > form > fieldset:nth-child(2){
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    padding: max(1vh, 10px) max(1vw, 10px);
+}
+input:focus{
+    outline-color: rgb(252, 159, 29);;
+}
+.addNewBook-modal > form > button{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: rgb(74, 151, 245);
+    border-radius: 5px;
+    margin-top: auto;
+}
+.addNewBook-modal > form > button:hover{
+    cursor: pointer;
+    background-color: rgb(55, 141, 245);
+}
+
+@keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25%, 75% {
+      transform: translateX(-2px);
+    }
+    50% {
+      transform: translateX(2px);
+    }
+}
+.shake{
+    animation: shake 0.5s ease-in-out infinite;
 }
 
 @media screen and (max-width: 1200px){

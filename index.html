@@ -22,7 +22,7 @@
 
     <main>
         <div class="button-container">
-            <button>
+            <button id="addBtn">
                 <span class="material-icons-outlined">
                     add
                 </span>
@@ -43,5 +43,26 @@
             </svg>
         </a>
     </footer>
+
+    <div class="dialog-container hide-container">
+    </div>
+    <div class="addNewBook-modal">
+        <p>Add New Book</p>
+        <form method="dialog">
+        
+            <fieldset>
+                <input type="text" name="title" id="title" placeholder="Title">
+                <input type="text" name="author" id="author" placeholder="Author">
+                <input type="number" name="numPages" id="numPages" placeholder="Pages">
+            </fieldset>
+        
+            <fieldset>
+                <label for="isRead">Finished Reading?</label>
+                <input type="checkbox" name="isRead" id="isRead">
+            </fieldset>
+        
+            <button type="button" id="addBook">Add</button>
+        </form>
+    </div>
 </body>
 </html>

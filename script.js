@@ -17,6 +17,7 @@ library.push(book6);
 library.push(book7);
 
 loadBooks();
+addListenerNewBook();
 
 function Book(title, author, numPages, isRead){
     this.title = title;
@@ -81,4 +82,33 @@ function generateBookEl(item, index){
   book.appendChild(buttonGrp);
 
   return book;
+}
+
+function addListenerNewBook(){
+  const addBtn = document.querySelector("#addBtn");
+  const addBook = document.querySelector("#addBook");
+  const cancel = document.querySelector("#cancelBook");
+  const modal = document.querySelector(".addNewBook-modal");
+  const dialogContainer = document.querySelector(".dialog-container");
+
+  dialogContainer.addEventListener("click", ()=>{
+    // dialog.classList.add("shake");
+
+    // setTimeout(()=>{
+    //   dialog.classList.remove("shake");
+    // }, 500)
+
+    modal.classList.remove("show-modal");
+    dialogContainer.classList.add("hide-container");
+  })
+
+  addBtn.addEventListener("click", ()=>{
+    modal.classList.add("show-modal");
+    dialogContainer.classList.remove("hide-container");
+  })
+
+  addBook.addEventListener("click", ()=>{
+    modal.classList.remove("show-modal");
+    dialogContainer.classList.add("hide-container");
+  });
 }
