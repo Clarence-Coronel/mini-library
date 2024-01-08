@@ -6,4 +6,4 @@ function Book(title, author, pageNum, isRead){
     this.info = ()=>{
       return `${this.title} by ${this.author}, ${pageNum} pages, ${isRead ? "has been read" :"not read yet"}.`;
     }
-  }
+}

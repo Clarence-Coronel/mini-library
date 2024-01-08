@@ -8,10 +8,6 @@
     color: rgb(62, 61, 61);
 }
 
-header, main, footer{
-    /* border: 1px solid red; */
-}
-
 body{
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -19,6 +15,7 @@ body{
     background-color: antiquewhite;
 }
 
+/* Header */
 header{
     display: grid;
     grid-template-columns: auto auto;
@@ -28,12 +25,10 @@ header{
     box-shadow: 0 1px 1px rgba(234, 202, 178, 0.722);
     z-index: 1;
 }
-
 .logo > span{
     color: rgb(246, 173, 128);
     font-size: 3rem;
 }
-
 span.logo{
     color: rgb(246, 173, 128);
     font-weight: 800;
@@ -47,6 +42,7 @@ span.logo{
     /* font-family: 'Caveat', cursive; */
 }
 
+/* Main */
 main{
     display: grid;
     grid-template-columns: 1fr;
@@ -54,13 +50,11 @@ main{
     background-color: rgb(252, 229, 197);
     padding: max(2vw, 20px) 20vw;
 }
-
 main .button-container{
     display: flex;
     justify-content: center;
 }
-
-.button-container button{
+main .button-container button{
     background-color: transparent;
     border: none;
     display: flex;
@@ -74,8 +68,7 @@ main .button-container{
 
     color: rgb(246, 173, 128);
 }
-
-.button-container button:hover{
+main .button-container button:hover{
     border-radius: 5px;
     /* background-color: rgba(243, 183, 105, 0.506); */
     cursor: pointer;
@@ -84,12 +77,118 @@ main .button-container{
 
      color: rgb(249, 138, 70);
 }
-
-.button-container button span{
+main .button-container button span{
     font-size: 2rem;
     color: inherit;
 }
+main .books-container{
+    display: grid;
+    gap: max(1vw, 10px);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    align-content: flex-start;
+}
+main .books-container .book{
+    height: 220px;
+    background-color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: max(2vh, 15px) max(1vw, 15px);
+    overflow: auto;
+    transition-duration: 100ms;
 
+    border-radius: 5px;
+}
+/* main .books-container .book:hover{
+    transform: translate(0, -5px);
+} */
+main .books-container .book .book-info{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: max(0.7vh, 7px);
+}
+.book .button-group{
+    display: flex;
+    flex-flow: column;
+    /* gap: max(1vh, 10px); */
+    width: 100%;
+}
+.book-info > span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.book-info > .title{
+    font-weight: 1000;
+    width: 100%;
+    font-size: 1.3rem;
+    text-align: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.book-info > .author, .book-info > .num-pages{
+    /* color: rgb(68, 68, 68); */
+    font-weight: 700;
+}
+.book-info > .author::before{
+    content: "Author: ";
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: rgb(150, 150, 150);
+}
+.book-info > .num-pages::before{
+    content: "Pages: ";
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: rgb(150, 150, 150);
+}
+.button-group button{
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+}
+.button-group button.toggle-read{
+
+}
+.button-group button.remove{
+    color: rgb(155, 155, 155);
+    font-size: 0.8rem;
+    font-weight: 400;
+    width: fit-content;
+    margin: 0 auto;
+}
+.button-group button.remove:hover{
+    cursor: pointer;
+    color: rgb(70, 69, 69);
+}
+.button-group button.read{
+    background-color: rgb(71, 209, 140);
+}
+.button-group button.read:hover{
+    cursor: pointer;
+    background-color: rgb(60, 205, 132);
+}
+.button-group button.not-read{
+    background-color: rgb(245, 107, 107);
+}
+.button-group button.not-read:hover{
+    cursor: pointer;
+    background-color: rgb(252, 116, 116);
+}
+
+
+
+
+/* Footer */
 footer{
     display: flex;
     flex-flow: row nowrap;
@@ -98,7 +197,6 @@ footer{
     padding: max(1vh, 10px) 20vw;
     gap: max(0.5vw, 5px);
 }
-
 footer a svg{
     transition-duration: 500ms;
     width: 30px;
