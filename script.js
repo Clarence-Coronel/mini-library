@@ -24,6 +24,7 @@ function Book(title, author, numPages, isRead){
     this.author = author;
     this.numPages = numPages;
     this.isRead = isRead;
+    this.isActive = true;
     this.info = ()=>{
       return `${this.title} by ${this.author}, ${numPages} pages, ${isRead ? "has been read" :"not read yet"}.`;
     }
@@ -33,11 +34,18 @@ function loadBooks(){
   let container = document.querySelector(".books-container");
   
   library.forEach((item, index)=>{
-    container.appendChild(generateBookEl(item, index));
+    try {
+      container.appendChild(generateBookEl(item, index));
+    } catch (error) {
+      
+    }
   });
 }
 
 function generateBookEl(item, index){
+
+  if(!item.isActive) return null;
+
   const book = document.createElement("div");
     book.classList.add("book");
     book.setAttribute("data-index", index);
@@ -62,15 +70,19 @@ function generateBookEl(item, index){
   bookInfo.appendChild(numPages);
 
   const toggleRead = document.createElement("button");
+    toggleRead.classList.add("toggle-read")
     if(item.isRead){
       toggleRead.classList.add("read");
-      toggleRead.innerText = "Read";
+      toggleRead.innerText = "Finished";
     }
     else{
       toggleRead.classList.add("not-read");
       toggleRead.innerText = "Not Read";
     }
     toggleRead.setAttribute("data-index", index);
+    toggleRead.addEventListener("click", ()=>{
+      toggleIsRead(index);
+    });
   const remove = document.createElement("button");
     remove.classList.add("remove");
     remove.innerText = "Remove";
@@ -105,6 +117,8 @@ function addListenerNewBook(){
 
     modal.classList.remove("show-modal");
     dialogContainer.classList.add("hide-container");
+    document.querySelector(".error").classList.remove("show-error");
+    form.reset();
   })
 
   addBtn.addEventListener("click", ()=>{
@@ -121,7 +135,7 @@ function addListenerNewBook(){
     let alreadyExist = false;
 
     library.forEach(book=>{
-      if(book.title.toLowerCase() == title.toLowerCase()){
+      if(book.title.toLowerCase() == title.toLowerCase() && book.isActive){
         document.querySelector(".error").classList.add("show-error");
         alreadyExist = true;
       }
@@ -135,14 +149,30 @@ function addListenerNewBook(){
     document.querySelector(".error").classList.remove("show-error");
     form.reset();
 
-    document.querySelector(".books-container").appendChild(generateBookEl(tempBook));
+    document.querySelector(".books-container").appendChild(generateBookEl(tempBook,library.length-1));
     modal.classList.remove("show-modal");
     dialogContainer.classList.add("hide-container");
-
-    console.log("reach end")
   }
 }
 
 function removeBook(index){
-  alert(index);
+    library[index].isActive = false;
+    document.querySelector(`.book[data-index="${index}"]`).remove();
+}
+
+function toggleIsRead(index){
+  library[index].isRead = library[index].isRead ? false : true;
+
+  if(library[index].isRead){
+    let toggle = document.querySelector(`.book[data-index="${index}"] .toggle-read`);
+    toggle.classList.remove("not-read");
+    toggle.classList.add("read")
+    toggle.innerText = "Finished";
+  } 
+  else if(!library[index].isRead){
+    let toggle = document.querySelector(`.book[data-index="${index}"] .toggle-read`);
+    toggle.classList.remove("read");
+    toggle.classList.add("not-read");
+    toggle.innerText = "Not Read";
+  } 
 }
