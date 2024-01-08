@@ -359,13 +359,7 @@ input:focus:invalid{
 }
 
 @media screen and (max-width: 500px){
-    /* main .books-container{
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    .addNewBook-modal{
+        top: 20%;
     }
-
-    .book-info > span{
-        width: 160px;
-        white-space: wrap;
-        text-overflow:ellipsis;
-    } */
 }
