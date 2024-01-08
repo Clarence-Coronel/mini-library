@@ -14,7 +14,8 @@ body{
     min-height: 100vh;
     background-color: antiquewhite;
     word-wrap: break-word;
-    overflow-x: hidden;
+    
+    /* overflow-x: hidden; */
 }
 
 /* Header */
@@ -87,7 +88,7 @@ main .button-container button span{
 }
 main .books-container{
     display: grid;
-    gap: max(1vw, 10px);
+    gap: max(2vw, 20px);
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     align-content: flex-start;
 }
@@ -99,9 +100,16 @@ main .books-container .book{
     align-items: center;
     padding: max(2vh, 15px) max(2vw, 20px);
     /* overflow: hidden; */
-    transition-duration: 100ms;
+    transition-duration: 500ms;
     gap: max(3vh, 20px);
     border-radius: 5px;
+
+    /* border: 2px solid rgba(255, 166, 0, 0.596); */
+    box-shadow: 5px 5px rgba(231, 186, 102, 0.7);
+}
+main .books-container .book:hover{
+    transform: translate(-10px, -10px);
+    box-shadow: 20px 20px rgba(231, 186, 102, 0.4);
 }
 main .books-container .book .book-info{
     display: flex;
@@ -162,7 +170,8 @@ main .books-container .book .book-info{
 }
 .button-group button.remove:hover{
     cursor: pointer;
-    color: rgb(70, 69, 69);
+    /* color: rgb(70, 69, 69); */
+    text-decoration: underline;
 }
 .button-group button.read{
     background-color: rgb(71, 209, 140);
@@ -203,9 +212,13 @@ a:hover svg{
 }
 
 .dialog-container{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    position: absolute;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,7 +230,7 @@ a:hover svg{
 }
 .addNewBook-modal{
     width: min(90vw, 300px);
-    height: min(70vh, 300px);
+    height: fit-content;
 
     position: fixed;
     top: 35%;
@@ -227,7 +240,7 @@ a:hover svg{
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
-    padding: max(1vh, 10px) max(1vw, 10px);
+    padding: max(2vh, 15px) max(2vw, 20px);
     border: none;
     background-color: rgb(243, 236, 229);
     border-radius: 5px;
@@ -284,6 +297,17 @@ fieldset label{
 input:focus{
     outline-color: rgb(252, 159, 29);;
 }
+.addNewBook-modal .error{
+    display: none;
+    color: red;
+    text-align: center;
+}
+.addNewBook-modal .show-error{
+    display: block;
+}
+input:focus:invalid{
+    border: red;
+}
 .addNewBook-modal > form > button{
     width: 100%;
     padding: 10px;
@@ -326,6 +350,11 @@ input:focus{
 
     footer{
         padding: max(1vh, 10px) max(5vw, 20px);
+    }
+
+    main .books-container .book:hover{
+        transform: none;
+        box-shadow: 5px 5px rgba(231, 186, 102, 0.7);;
     }
 }
 

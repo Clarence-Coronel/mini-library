@@ -1,7 +1,7 @@
 let library = [];
 
 let book1 = new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 223, true);
-let book2 = new Book("Harry Potter and the Chamber of Secrets", "J.K. RowlingRowlingRowlingRowlingRowlingRowling", 243, true);
+let book2 = new Book("Harry Potter and the Chamber of Secrets", "J.K. Rowling", 243, true);
 let book3 = new Book("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 273, true);
 let book4 = new Book("Harry Potter and the Goblet of Fire", "J.K. Rowling", 223, true);
 let book5 = new Book("Harry Potter and the Order of the Phoenix", "J.K. Rowling", 253, false);
@@ -40,6 +40,7 @@ function loadBooks(){
 function generateBookEl(item, index){
   const book = document.createElement("div");
     book.classList.add("book");
+    book.setAttribute("data-index", index);
 
   const bookInfo = document.createElement("div");
     bookInfo.classList.add("book-info");
@@ -74,6 +75,9 @@ function generateBookEl(item, index){
     remove.classList.add("remove");
     remove.innerText = "Remove";
     remove.setAttribute("data-index", index);
+    remove.addEventListener("click", ()=>{
+      removeBook(index);
+    });
     
   buttonGrp.appendChild(toggleRead);
   buttonGrp.appendChild(remove);
@@ -90,6 +94,7 @@ function addListenerNewBook(){
   const cancel = document.querySelector("#cancelBook");
   const modal = document.querySelector(".addNewBook-modal");
   const dialogContainer = document.querySelector(".dialog-container");
+  const form = document.querySelector(".addNewBook-modal form");
 
   dialogContainer.addEventListener("click", ()=>{
     // dialog.classList.add("shake");
@@ -107,8 +112,37 @@ function addListenerNewBook(){
     dialogContainer.classList.remove("hide-container");
   })
 
-  addBook.addEventListener("click", ()=>{
+  form.onsubmit = ()=>{
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let pages = document.querySelector("#numPages").value;
+    let isRead = document.querySelector("#isRead").checked;
+
+    let alreadyExist = false;
+
+    library.forEach(book=>{
+      if(book.title.toLowerCase() == title.toLowerCase()){
+        document.querySelector(".error").classList.add("show-error");
+        alreadyExist = true;
+      }
+    })
+
+    if(alreadyExist) return;
+
+    let tempBook = new Book(title, author, pages, isRead);
+
+    library.push(tempBook);
+    document.querySelector(".error").classList.remove("show-error");
+    form.reset();
+
+    document.querySelector(".books-container").appendChild(generateBookEl(tempBook));
     modal.classList.remove("show-modal");
     dialogContainer.classList.add("hide-container");
-  });
+
+    console.log("reach end")
+  }
+}
+
+function removeBook(index){
+  alert(index);
 }

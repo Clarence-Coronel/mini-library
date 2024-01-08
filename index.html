@@ -51,9 +51,10 @@
         <form method="dialog">
         
             <fieldset>
-                <input type="text" name="title" id="title" placeholder="Title">
-                <input type="text" name="author" id="author" placeholder="Author">
-                <input type="number" name="numPages" id="numPages" placeholder="Pages">
+                <input type="text" name="title" id="title" placeholder="Title" maxlength="60" required>
+                <span class="error">This book already exists in your library.</span>
+                <input type="text" name="author" id="author" placeholder="Author" maxlength="60" required>
+                <input type="number" name="numPages" id="numPages" placeholder="Pages" max="9999" min="1" required>
             </fieldset>
         
             <fieldset>
@@ -61,7 +62,7 @@
                 <input type="checkbox" name="isRead" id="isRead">
             </fieldset>
         
-            <button type="button" id="addBook">Add</button>
+            <button type="submit" id="addBook">Add</button>
         </form>
     </div>
 </body>
