@@ -1,12 +1,12 @@
 let library = [];
 
-let book1 = new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 223, true);
-let book2 = new Book("Harry Potter and the Chamber of Secrets", "J.K. Rowling", 243, true);
-let book3 = new Book("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 273, true);
-let book4 = new Book("Harry Potter and the Goblet of Fire", "J.K. Rowling", 223, true);
-let book5 = new Book("Harry Potter and the Order of the Phoenix", "J.K. Rowling", 253, false);
-let book6 = new Book("Harry Potter and the Half-Blood Prince", "J.K. Rowling", 313, false);
-let book7 = new Book("Harry Potter and the Deathly Hallows", "J.K. Rowling", 343, false);
+let book1 = Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 223, true);
+let book2 = Book("Harry Potter and the Chamber of Secrets", "J.K. Rowling", 243, true);
+let book3 = Book("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 273, true);
+let book4 = Book("Harry Potter and the Goblet of Fire", "J.K. Rowling", 223, true);
+let book5 = Book("Harry Potter and the Order of the Phoenix", "J.K. Rowling", 253, false);
+let book6 = Book("Harry Potter and the Half-Blood Prince", "J.K. Rowling", 313, false);
+let book7 = Book("Harry Potter and the Deathly Hallows", "J.K. Rowling", 343, false);
 
 library.push(book1);
 library.push(book2);
@@ -19,15 +19,9 @@ library.push(book7);
 loadBooks();
 addListenerNewBook();
 
+// Factory Function
 function Book(title, author, numPages, isRead){
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.isRead = isRead;
-    this.isActive = true;
-    this.info = ()=>{
-      return `${this.title} by ${this.author}, ${numPages} pages, ${isRead ? "has been read" :"not read yet"}.`;
-    }
+    return {title, author, numPages, isRead, isActive: true};
 }
 
 function loadBooks(){
